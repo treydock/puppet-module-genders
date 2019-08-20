@@ -1,8 +1,7 @@
-# genders
+# puppet-module-genders
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
-
-The README template below provides a starting point with details about what information to include in your README.
+[![Puppet Forge](http://img.shields.io/puppetforge/v/treydock/genders.svg)](https://forge.puppetlabs.com/treydock/genders)
+[![Build Status](https://travis-ci.org/treydock/puppet-module-genders.png)](https://travis-ci.org/treydock/puppet-module-genders)
 
 #### Table of Contents
 
@@ -10,78 +9,61 @@ The README template below provides a starting point with details about what info
 2. [Setup - The basics of getting started with genders](#setup)
     * [What genders affects](#what-genders-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with genders](#beginning-with-genders)
 3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+4. [Reference - Module reference](#reference)
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module is what they want.
+This module will manage [genders](https://github.com/chaos/genders)
 
 ## Setup
 
-### What genders affects **OPTIONAL**
+### What genders affects
 
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
+This module will install the genders packages and manage the genders config.
 
-If there's more that they should know about, though, this is the place to mention:
+### Setup Requirements
 
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
-
-### Beginning with genders
-
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+For systems with `yum` package manager using Puppet >= 6.0 there is a dependency on [puppetlabs/yumrepo_core](https://forge.puppet.com/puppetlabs/yumrepo_core).
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your users how to use your module to solve problems, and be sure to include code examples. Include three to five examples of the most important or common tasks a user can accomplish with your module. Show users how to accomplish more complex tasks that involve different types, classes, and functions working in tandem.
+Install genders:
+
+```puppet
+include ::genders
+```
+
+Define nodes either via `genders` class parameter or via defined type:
+
+```puppet
+class { '::genders':
+  nodes => {
+    'compute01' => { 'attrs' => ['compute','rack01'] },
+  },
+}
+::genders::node { 'compute02':
+  attrs => ['compute','rack01'],
+}
+```
+
+A node's attributes can be defined as a Hash
+
+```puppet
+::genders::node { 'compute02':
+  attrs => {'role' => 'compute','rack' => 'rack01'},
+}
+```
+
+A node can be defined as an Array
+
+```puppet
+::genders::node { 'compute':
+  node => ['compute01','compute02']
+  attrs => ['compute','rack01'],
+}
+```
 
 ## Reference
 
-This section is deprecated. Instead, add reference information to your code as Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your module. For details on how to add code comments and generate documentation with Strings, see the Puppet Strings [documentation](https://puppet.com/docs/puppet/latest/puppet_strings.html) and [style guide](https://puppet.com/docs/puppet/latest/puppet_strings_style.html)
-
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the root of your module directory and list out each of your module's classes, defined types, facts, functions, Puppet tasks, task plans, and resource types and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
-
-For example:
-
-```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
-```
-
-## Limitations
-
-In the Limitations section, list any incompatibilities, known issues, or other warnings.
-
-## Development
-
-In the Development section, tell other users the ground rules for contributing to your project and how they should submit their work.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+[http://treydock.github.io/puppet-module-genders/](http://treydock.github.io/puppet-module-genders/)

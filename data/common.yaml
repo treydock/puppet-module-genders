@@ -1,1 +1,8 @@
 ---
+genders::manage_repo: true
+genders::package_name: genders
+genders::package_ensure: installed
+genders::nodeattr_path: nodeattr
+genders::config_path: /etc/genders
+genders::verify_config: true
+genders::nodes: {}

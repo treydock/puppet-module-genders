@@ -1,0 +1,13 @@
+<%-
+if @node.is_a?(Array)
+  nodename = @node.join(',')
+else
+  nodename = @node
+end
+if @attrs.is_a?(Array)
+  attrs = @attrs.join(',')
+else
+  attrs = @attrs.map { |k,v| "#{k}=#{v}" }.join(',')
+end
+-%>
+<%= nodename %> <%= attrs %>
