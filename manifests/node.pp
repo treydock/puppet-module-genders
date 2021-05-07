@@ -28,7 +28,7 @@ define genders::node (
   Optional[String] $source = undef,
   String $order = '50',
 ) {
-  include ::genders
+  include genders
 
   if ! $source and ! $content {
     $_content = template('genders/node.erb')
