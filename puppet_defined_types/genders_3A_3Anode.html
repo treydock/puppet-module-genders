@@ -6,15 +6,15 @@
 <title>
   Defined Type: genders::node
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_defined_types::genders::node";
   relpath = '../';
 </script>
@@ -200,6 +200,7 @@
 </ul>
 
 
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -240,7 +241,7 @@ define genders::node (
   Optional[String] $source = undef,
   String $order = &#39;50&#39;,
 ) {
-  include ::genders
+  include genders
 
   if ! $source and ! $content {
     $_content = template(&#39;genders/node.erb&#39;)
