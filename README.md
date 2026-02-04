@@ -22,10 +22,6 @@ This module will manage [genders](https://github.com/chaos/genders)
 
 This module will install the genders packages and manage the genders config.
 
-### Setup Requirements
-
-For systems with `yum` package manager using Puppet >= 6.0 there is a dependency on [puppetlabs/yumrepo_core](https://forge.puppet.com/puppetlabs/yumrepo_core).
-
 ## Usage
 
 Install genders:

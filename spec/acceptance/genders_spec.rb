@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'genders class:' do
-  context 'default parameters' do
+  context 'with default parameters' do
     it 'runs successfully' do
-      pp = <<-EOS
+      pp = <<-PP
       class { 'genders': }
       genders::node { 'compute01':
         attrs => ['compute','rack01'],
@@ -15,7 +17,7 @@ describe 'genders class:' do
         node  => ['compute03','compute04'],
         attrs => ['compute','rack01'],
       }
-      EOS
+      PP
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)

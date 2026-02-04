@@ -22,7 +22,6 @@ class genders (
   Stdlib::Absolutepath $config_path = '/etc/genders',
   Hash $nodes = {},
 ) {
-
   if dig($facts, 'os', 'family') == 'RedHat' {
     if $manage_repo {
       include epel
@@ -54,5 +53,4 @@ class genders (
   $nodes.each |$name, $node| {
     genders::node { $name: * => $node }
   }
-
 }
