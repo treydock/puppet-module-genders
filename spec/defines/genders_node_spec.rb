@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'genders::node' do
   on_supported_os.each do |os, os_facts|
-    context "on #{os}" do
+    context "when #{os}" do
       let(:facts) { os_facts }
       let(:title) { 'compute01' }
       let(:params) do
@@ -12,6 +14,7 @@ describe 'genders::node' do
       end
 
       it { is_expected.to compile }
+
       it do
         is_expected.to contain_concat__fragment('/etc/genders.compute01').with(
           target: '/etc/genders',
