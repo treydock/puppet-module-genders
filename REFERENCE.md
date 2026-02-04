@@ -10,7 +10,7 @@
 
 ### Defined types
 
-* [`genders::node`](#gendersnode): Manage genders node
+* [`genders::node`](#genders--node): Manage genders node
 
 ## Classes
 
@@ -30,22 +30,22 @@ include genders
 
 The following parameters are available in the `genders` class:
 
-* [`manage_repo`](#manage_repo)
-* [`package_name`](#package_name)
-* [`package_ensure`](#package_ensure)
-* [`config_path`](#config_path)
-* [`nodes`](#nodes)
+* [`manage_repo`](#-genders--manage_repo)
+* [`package_name`](#-genders--package_name)
+* [`package_ensure`](#-genders--package_ensure)
+* [`config_path`](#-genders--config_path)
+* [`nodes`](#-genders--nodes)
 
-##### <a name="manage_repo"></a>`manage_repo`
+##### <a name="-genders--manage_repo"></a>`manage_repo`
 
 Data type: `Boolean`
 
 Boolean that sets of repo for genders should be managed
 Currently only impacts Red Hat based systems
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-genders--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -53,7 +53,7 @@ Genders package name
 
 Default value: `'genders'`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-genders--package_ensure"></a>`package_ensure`
 
 Data type: `String`
 
@@ -61,7 +61,7 @@ Genders package ensure property
 
 Default value: `'installed'`
 
-##### <a name="config_path"></a>`config_path`
+##### <a name="-genders--config_path"></a>`config_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -69,7 +69,7 @@ Path to genders file
 
 Default value: `'/etc/genders'`
 
-##### <a name="nodes"></a>`nodes`
+##### <a name="-genders--nodes"></a>`nodes`
 
 Data type: `Hash`
 
@@ -79,7 +79,7 @@ Default value: `{}`
 
 ## Defined types
 
-### <a name="gendersnode"></a>`genders::node`
+### <a name="genders--node"></a>`genders::node`
 
 Manage genders node
 
@@ -105,13 +105,13 @@ genders::node { 'compute01':
 
 The following parameters are available in the `genders::node` defined type:
 
-* [`node`](#node)
-* [`attrs`](#attrs)
-* [`content`](#content)
-* [`source`](#source)
-* [`order`](#order)
+* [`node`](#-genders--node--node)
+* [`attrs`](#-genders--node--attrs)
+* [`content`](#-genders--node--content)
+* [`source`](#-genders--node--source)
+* [`order`](#-genders--node--order)
 
-##### <a name="node"></a>`node`
+##### <a name="-genders--node--node"></a>`node`
 
 Data type: `Variant[Array[String], String]`
 
@@ -119,7 +119,7 @@ The node or nodes to define in genders file
 
 Default value: `$name`
 
-##### <a name="attrs"></a>`attrs`
+##### <a name="-genders--node--attrs"></a>`attrs`
 
 Data type: `Variant[Array[String],Hash[String,String]]`
 
@@ -127,23 +127,23 @@ Array or Hash of attributes to define for a node
 
 Default value: `[]`
 
-##### <a name="content"></a>`content`
+##### <a name="-genders--node--content"></a>`content`
 
 Data type: `Optional[String]`
 
 Optional content to override module template
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="source"></a>`source`
+##### <a name="-genders--node--source"></a>`source`
 
 Data type: `Optional[String]`
 
 Optional Source to override module template
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="order"></a>`order`
+##### <a name="-genders--node--order"></a>`order`
 
 Data type: `String`
 
